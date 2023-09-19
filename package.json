@@ -1,5 +1,5 @@
 {
-  "name": "bcit_timetable",
+  "name": "cool",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,16 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@aldabil/react-scheduler": "^2.7.13",
     "@fullcalendar/core": "^6.1.8",
     "@fullcalendar/daygrid": "^6.1.8",
     "@fullcalendar/interaction": "^6.1.8",
     "@fullcalendar/react": "^6.1.8",
+    "@fullcalendar/resource": "^6.1.8",
     "@fullcalendar/resource-timeline": "^6.1.8",
+    "@fullcalendar/rrule": "^6.1.8",
     "@fullcalendar/timegrid": "^6.1.8",
+    "luxon": "^3.3.0",
     "moment": "^2.29.4",
     "next": "13.4.12",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "rrule": "^2.7.2"
   }
 }

@@ -86,13 +86,14 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  /* color: rgb(var(--foreground-rgb)); */
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
+  background-color: white
 }
 
 a {
@@ -100,8 +101,21 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
+.fc-timegrid-event-harness.fc-timegrid-event-harness-inset > a{
+  background-color: rgba(1, 65, 255, 0) !important;
+  /* border-color: rgba(1, 65, 255, 0) !important */
+}
+
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
-}
+} */
+
+/* .container {
+display: table;
+width: 100%;}
+.container > span {
+display: table-cell;
+width: auto;
+text-align: center;} */
