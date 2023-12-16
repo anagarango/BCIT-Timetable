@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { coursesList, roomsList, facultyList, programSetsList } from './fullcalendar/data'
+import { Heading } from '@anagarango/styled-components-starter-pack';
 
 export default function CreateItems(){
   // localStorage.clear()
@@ -37,9 +38,12 @@ export default function CreateItems(){
   function handleChange(e){
     const fileReader = new FileReader();
     fileReader.readAsText(e.target.files[0], "UTF-8");
-    fileReader.onload = e => {
-      setFiles(JSON.parse(e.target.result));
-    };
+    fileReader.onload = event => {
+      setFiles(JSON.parse(event.target.result))
+    }
+    // fileReader.onload = e => {
+    //   setFiles(JSON.parse(e.target.result));
+    // };
   };
  
 
@@ -69,11 +73,11 @@ export default function CreateItems(){
 
   useEffect(()=>{
     if(files){
-      setAddingRoom(addingRoom.concat(JSON.parse(files.Room)))
-      setAddingCourse(addingCourse.concat(JSON.parse(files.Course)))
-      setAddingFaculty(addingFaculty.concat(JSON.parse(files.Faculty)))
-      setAddingProgramSets(addingProgramSets.concat(JSON.parse(files['Program/Sets'])))
-      setEvents(JSON.parse(localStorage.getItem('Events')).concat(JSON.parse(files.Events)))
+      setAddingRoom(addingRoom.concat(files.Room))
+      setAddingCourse(addingCourse.concat(files.Course))
+      setAddingFaculty(addingFaculty.concat(files.Faculty))
+      setAddingProgramSets(addingProgramSets.concat(files['Program/Sets']))
+      setEvents(JSON.parse(localStorage.getItem('Events')).concat(files.Events))
     }
   },[files])
 
@@ -100,10 +104,10 @@ export default function CreateItems(){
   
 
   return(
-    <div style={{height:"fit-content", margin:"15px"}}>
+    <div style={{margin:"15px"}}>
       <div style={{display:"flex", justifyContent:"space-between"}}>
         <div>
-          <h1>Create Items</h1>
+          <Heading>Create Items</Heading>
           <p style={{margin:"0 0 20px 0"}}>Use this page to create blocks of information to fill the containers you create on the schedules page.</p>
           <a href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(dataObject))}`} download="localStorageData.json" style={{padding:"10px", backgroundColor:"lightgreen", marginRight:"30px", border:"1px solid black"}}>Download Calendar Data</a>
           <input type="file" accept=".json" onChange={handleChange} />
