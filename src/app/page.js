@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { coursesList, roomsList, facultyList, programSetsList } from './fullcalendar/data'
 import { Heading } from '@anagarango/styled-components-starter-pack';
 
 export default function CreateItems(){
@@ -92,11 +91,11 @@ export default function CreateItems(){
 
 
     setDataObject({
-      Course: JSON.stringify(addingCourse),
-      Events:  JSON.stringify(events),
-      Faculty: JSON.stringify(addingFaculty),
-      'Program/Sets': JSON.stringify(addingProgramSets),
-      Room: JSON.stringify(addingRoom),
+      Course: addingCourse,
+      Events:  events,
+      Faculty: addingFaculty,
+      'Program/Sets': addingProgramSets,
+      Room: addingRoom,
     })
   }, [addingRoom, addingCourse, addingFaculty, addingProgramSets, events])
 
@@ -109,7 +108,7 @@ export default function CreateItems(){
         <div>
           <Heading>Create Items</Heading>
           <p style={{margin:"0 0 20px 0"}}>Use this page to create blocks of information to fill the containers you create on the schedules page.</p>
-          <a href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(dataObject))}`} download="localStorageData.json" style={{padding:"10px", backgroundColor:"lightgreen", marginRight:"30px", border:"1px solid black"}}>Download Calendar Data</a>
+          <a href={`data:application/json;charset=utf-8,${encodeURIComponent(JSON.stringify(dataObject, null, 2))}`} download="localStorageData.json" style={{padding:"10px", backgroundColor:"lightgreen", marginRight:"30px", border:"1px solid black"}}>Download Calendar Data</a>
           <input type="file" accept=".json" onChange={handleChange} />
         </div>
         <p style={{padding:"20px", backgroundColor:"lightblue", height:"fit-content", border:"1px solid black"}} onClick={()=>r.push("/fullcalendar")}>Go to Calendar</p>
